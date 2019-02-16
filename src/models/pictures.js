@@ -1,0 +1,5 @@
+const pictures = [
+  {
+    key: 'zedofuliudhf'
+  }
+];

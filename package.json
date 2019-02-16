@@ -1,5 +1,5 @@
 {
-  "name": "express-es6-rest-api",
+  "name": "mind-travel-api",
   "version": "0.3.0",
   "description": "Starter project for an ES6 RESTful Express API",
   "main": "dist",
@@ -24,10 +24,9 @@
       "no-unused-vars": 1
     }
   },
-  "repository": "developit/express-es6-rest-api",
-  "author": "Jason Miller <jason@developit.ca>",
   "license": "MIT",
   "dependencies": {
+    "aws-sdk": "^2.404.0",
     "body-parser": "^1.13.3",
     "compression": "^1.5.2",
     "cors": "^2.7.1",
