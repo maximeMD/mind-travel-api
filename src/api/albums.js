@@ -17,7 +17,7 @@ albumsRouter.get('/', (req, res) => {
   });
 
   var s3Params = {
-    Bucket: awsConfig.awsS3BucketName
+    Bucket: awsConfig.awsS3BucketNameImages
   };
   var s3 = new aws.S3();
 
