@@ -27,10 +27,15 @@
   "license": "MIT",
   "dependencies": {
     "aws-sdk": "^2.404.0",
+    "babel-eslint": "^10.0.1",
+    "bcrypt": "^3.0.4",
     "body-parser": "^1.13.3",
     "compression": "^1.5.2",
     "cors": "^2.7.1",
     "express": "^4.13.3",
+    "express-jwt": "^5.3.1",
+    "jsonwebtoken": "^8.5.0",
+    "local-storage": "^1.4.2",
     "morgan": "^1.8.0",
     "resource-router-middleware": "^0.6.0"
   },
