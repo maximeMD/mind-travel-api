@@ -1,6 +1,6 @@
 // import resource from 'resource-router-middleware';
 import aws from 'aws-sdk';
-import * as awsConfig from '../awsconfig.json';
+import * as credentials from '../credentials.json';
 import { Router } from 'express';
 
 var albumsRouter = Router();
@@ -11,13 +11,13 @@ albumsRouter.get('/', (req, res) => {
   var newAlbumKey = '';
 
   aws.config.update({
-    secretAccessKey: awsConfig.awsSecretKey,
-    accessKeyId: awsConfig.awsAccessKey,
-    region: awsConfig.awsS3Region
+    secretAccessKey: credentials.awsSecretKey,
+    accessKeyId: credentials.awsAccessKey,
+    region: credentials.awsS3Region,
   });
 
   var s3Params = {
-    Bucket: awsConfig.awsS3BucketNameImages
+    Bucket: credentials.awsS3BucketNameImages,
   };
   var s3 = new aws.S3();
 
@@ -43,7 +43,7 @@ albumsRouter.get('/', (req, res) => {
           newAlbumKey = item.Key.split('/')[0];
           albums.push({
             key: newAlbumKey,
-            pictures: []
+            pictures: [],
           });
         }
       });

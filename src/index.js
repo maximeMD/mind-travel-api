@@ -8,7 +8,7 @@ import api from './api';
 import config from './config.json';
 import path from 'path';
 import aws from 'aws-sdk';
-import * as awsConfig from './awsconfig.json';
+import * as credentials from './credentials.json';
 import bcrypt from 'bcrypt';
 import expressJwt from 'express-jwt';
 
@@ -22,18 +22,21 @@ app.use(cors());
 
 app.use(
   bodyParser.json({
-    limit: config.bodyLimit
-  })
+    limit: config.bodyLimit,
+  }),
 );
 // require JWT authentication
-const secret = 'mySecret';
+const secret = credentials.jwtSecret;
+
 app.use(
   expressJwt({ secret }).unless({
     path: [
       // public routes that don't require authentication
-      '/api/users/authenticate'
-    ]
-  })
+      '/api/users/authenticate',
+      // client fetch images without headers, but the token is directly on the URL
+      /\/api\/pictures/i,
+    ],
+  }),
 );
 
 // api router
