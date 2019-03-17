@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+    stages {
+        stage('Clear docker container') {
+            steps{
+                sh 'docker stop mindtravel-api-dev || true && docker rm mindtravel-api-dev || true'
+            }
+        }
+        stage('Build') { 
+            steps {
+                sh 'docker build -t mindtravel-api:dev .'            
+            }
+        }
+        stage('Deploy') {
+            steps{
+                sh 'docker run -p 8080:8080 --name mindtravel-api-dev'
+            }
+        }
+    }
+}
