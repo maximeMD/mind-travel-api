@@ -6,10 +6,8 @@ pipeline {
                 sh 'docker stop mindtravel-api-dev || true && docker rm mindtravel-api-dev || true'
             }
         }
-        stage('Retrieve credentials){
+        stage('Retrieve credentials'){
             steps{
-                sh 'ls -al'
-                sh 'ls -al /var/jenkins_home/mind-travel-api/'
                 sh 'cp /var/jenkins_home/mind-travel-api/credentials.json ./src/credentials.json'
             }
         }
