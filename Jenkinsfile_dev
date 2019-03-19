@@ -6,6 +6,11 @@ pipeline {
                 sh 'docker stop mindtravel-api-dev || true && docker rm mindtravel-api-dev || true'
             }
         }
+        stage('Retrieve credentials){
+            steps{
+                sh 'cp /var/jenkins_home/mind-travel-api/credentials.json ./src./credentials.json'
+            }
+        }
         stage('Build') { 
             steps {
                 sh 'docker build -t mindtravel-api:dev .'            
