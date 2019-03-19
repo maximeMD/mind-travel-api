@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Retrieve credentials){
             steps{
-                sh 'cp /var/jenkins_home/mind-travel-api/credentials.json ./src./credentials.json'
+                sh 'cp /var/jenkins_home/mind-travel-api/credentials.json ./src/credentials.json'
             }
         }
         stage('Build') { 
