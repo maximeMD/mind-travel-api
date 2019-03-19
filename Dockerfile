@@ -3,6 +3,11 @@ FROM node:alpine
 # File Author / Maintainer
 LABEL authors="maximeMD"
 
+# Install packages
+RUN apk --no-cache add --virtual native-deps \
+    g++ gcc libgcc libstdc++ linux-headers autoconf automake make nasm python git && \
+    npm install --quiet node-gyp -g
+
 # Install app dependencies
 COPY package.json /www/package.json
 RUN cd /www; npm install
