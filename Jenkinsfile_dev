@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Deploy') {
             steps{
-                sh 'docker run -p 8080:8080 --name mindtravel-api-dev mindtravel-api:dev'
+                sh 'docker run -p 9595:8080 --name mindtravel-api-dev mindtravel-api:dev'
             }
         }
     }
