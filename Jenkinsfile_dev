@@ -18,7 +18,7 @@ pipeline {
         }
         stage('Deploy') {
             steps{
-                sh 'docker run -p 9595:8080 -v mindtravel-api-dev-build:/mindtravel-api-data --name mindtravel-api-dev mindtravel-api:dev'
+                sh 'docker run -d -p 9595:8080 -v mindtravel-api-dev-build:/mindtravel-api-data --name mindtravel-api-dev mindtravel-api:dev'
             }
         }
     }
