@@ -18,6 +18,9 @@ COPY . /www
 # Set work directory to /www
 WORKDIR /www
 
+# Copy credentials from the persistent volume
+RUN cp /mindtravel-api-data/credentials.json ./src/credentials.json
+
 # set your port
 ENV PORT 8080
 
