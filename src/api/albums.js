@@ -25,9 +25,18 @@ albumsRouter.get('/', (req, res) => {
     if (err) console.log(err, err.stack);
     else {
       data.Contents.forEach(item => {
+        if (item.Key.includes('test')) console.log('TCL: item', item);
+
         var albumKey = item.Key.split('/')[0];
         var pictureKey = item.Key.split('/')[1]; // null if the item is an album
 
+        if (albums.findIndex(album => album.key === albumKey) === -1) {
+          // this is a new album, or a picture in a new album
+          albums.push({
+            key: albumKey,
+            pictures: [],
+          });
+        }
         if (pictureKey) {
           // this item is a picture
           albums.map(album => {
@@ -37,13 +46,6 @@ albumsRouter.get('/', (req, res) => {
                 album.thumbnail = item.Key;
               }
             }
-          });
-        } else {
-          // this item is an album
-          newAlbumKey = item.Key.split('/')[0];
-          albums.push({
-            key: newAlbumKey,
-            pictures: [],
           });
         }
       });

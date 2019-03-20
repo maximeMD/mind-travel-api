@@ -50,7 +50,8 @@ app.server.listen(process.env.PORT || config.port, () => {
 const options = {
   providerOptions: {
     s3: {
-      getKey: (req, filename) => filename,
+      // The picture key is build from the request 'Album' header and the file name
+      getKey: (req, filename) => req.get('Album') + '/' + filename,
       key: credentials.awsAccessKey,
       secret: credentials.awsSecretKey,
       bucket: credentials.awsS3BucketNameImages,
