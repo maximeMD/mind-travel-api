@@ -25,8 +25,6 @@ albumsRouter.get('/', (req, res) => {
     if (err) console.log(err, err.stack);
     else {
       data.Contents.forEach(item => {
-        if (item.Key.includes('test')) console.log('TCL: item', item);
-
         var albumKey = item.Key.split('/')[0];
         var pictureKey = item.Key.split('/')[1]; // null if the item is an album
 
