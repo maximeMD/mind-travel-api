@@ -3,7 +3,6 @@ import aws from 'aws-sdk';
 import * as credentials from '../credentials.json';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
-import hash from 'hash.js';
 
 var usersRouter = Router();
 
@@ -45,9 +44,8 @@ usersRouter.post('/authenticate', (req, res) => {
       return;
     }
     const user = data.Item;
-    console.log(user);
-    //check if the password is correct
 
+    //check if the password is correct
     bcrypt
       .compare(req.body.password, user.password)
       .then(isPasswordCorrect => {

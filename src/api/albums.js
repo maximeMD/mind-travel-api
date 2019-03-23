@@ -1,4 +1,3 @@
-// import resource from 'resource-router-middleware';
 import aws from 'aws-sdk';
 import * as credentials from '../credentials.json';
 import { Router } from 'express';
