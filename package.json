@@ -6,11 +6,7 @@
   "scripts": {
     "dev": "nodemon -w src --exec \"ts-node-dev src\"",
     "build": "tsc",
-    "start": "node dist",
-    "prestart": "npm run -s build",
-    "test": "eslint src",
-    "debug": "babel-node src,stage-0",
-    "check-types": "tsc",
+    "start": "ts-node -T ./src/index.ts",
     "tslint": "tslint -c tslint.json 'src/**/*.ts'"
   },
   "eslintConfig": {
