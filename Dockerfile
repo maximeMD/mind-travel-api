@@ -1,10 +1,12 @@
-FROM alpine:3.4
+FROM node:alpine
 
 # File Author / Maintainer
-LABEL authors="Zouhir Chahoud <zouhir@zouhir.org>"
+LABEL authors="maximeMD"
 
-# Update & install required packages
-RUN apk add --update nodejs bash git
+# Install packages
+RUN apk --no-cache add --virtual native-deps \
+    g++ gcc libgcc libstdc++ linux-headers autoconf automake make nasm python git && \
+    npm install --quiet node-gyp -g
 
 # Install app dependencies
 COPY package.json /www/package.json

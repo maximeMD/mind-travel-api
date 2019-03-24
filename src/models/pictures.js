@@ -1,5 +1,0 @@
-const pictures = [
-  {
-    key: 'zedofuliudhf'
-  }
-];

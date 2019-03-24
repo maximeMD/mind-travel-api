@@ -1,11 +1,11 @@
-import { version } from '../../package.json';
 import { Router } from 'express';
+import { version } from '../../package.json';
 import albumsRouter from './albums';
 import picturesRouter from './pictures';
-import usersRouter from './users.js';
+import usersRouter from './users';
 
 export default () => {
-  let api = Router();
+  const api = Router();
 
   // mount the albums resource
   api.use('/albums', albumsRouter);
