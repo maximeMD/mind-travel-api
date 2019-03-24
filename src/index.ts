@@ -1,22 +1,27 @@
-import http from 'http';
-import express from 'express';
-import cors from 'cors';
-import morgan from 'morgan';
+import companion from '@uppy/companion';
 import bodyParser from 'body-parser';
-import middleware from './middleware';
+import cors from 'cors';
+import express from 'express';
+import expressJwt from 'express-jwt';
+import http from 'http';
+import morgan from 'morgan';
 import api from './api';
 import config from './config.json';
 import credentials from './credentials.json';
-import expressJwt from 'express-jwt';
-import companion from '@uppy/companion';
+import middleware from './middleware';
 
-let app = express();
+const app = express();
 // app.server = http.createServer(app);
-
-const test = 'tlalt';
 
 // logger
 app.use(morgan('dev'));
+
+// api router
+app.use('/api', api());
+// app.post('/api/users/authenticate', (req, res) => {
+//   console.log('test');
+//   res.send({ test: 'kikkor' });
+// });
 
 app.use(cors());
 
@@ -41,29 +46,28 @@ app.use(
 
 // app.server.listen(process.env.PORT || config.port, () => {
 app.listen(process.env.PORT || config.port, () => {
-  // console.log(`Started on port ${app.server.address().port}`);
   console.log(`Started on port ${process.env.PORT || config.port}`);
 });
 
 const options = {
+  debug: true,
+  filePath: './data/uppy_temp',
   providerOptions: {
     s3: {
       // The picture key is build from the request 'Album' header and the file name
+      bucket: credentials.awsS3BucketNameImages,
       getKey: (req: any, filename: any) => req.get('Album') + '/' + filename,
       key: credentials.awsAccessKey,
-      secret: credentials.awsSecretKey,
-      bucket: credentials.awsS3BucketNameImages,
       region: credentials.awsS3Region,
+      secret: credentials.awsSecretKey,
     },
   },
   server: {
     host: 'localhost:8080',
     protocol: 'http',
   },
-  filePath: './data/uppy_temp',
   // secret: 'mysecret',
   // uploadUrls: ['https://myuploadurl.com', 'http://myuploadurl2.com'],
-  debug: true,
 };
 
 app.use(companion.app(options));

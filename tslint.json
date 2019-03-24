@@ -13,8 +13,8 @@
       "severity": "off",
       "options": ["debug", "info", "log", "time", "timeEnd", "trace"]
     },
-    "no-unused-variable": true,
-    "quotemark": [true, "single"]
+    "quotemark": [true, "single"],
+    "arrow-parens": [true, "ban-single-arg-parens"]
   },
   "jsRules": {
     "max-line-length": {

@@ -1,16 +1,16 @@
-import { Router } from 'express';
 import aws from 'aws-sdk';
-import * as credentials from '../credentials.json';
-import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
+import { Router } from 'express';
+import jwt from 'jsonwebtoken';
+import credentials from '../credentials.json';
 
-var usersRouter = Router();
+const usersRouter = Router();
 
 //  AWS config
 aws.config.update({
-  secretAccessKey: credentials.awsSecretKey,
   accessKeyId: credentials.awsAccessKey,
   region: credentials.awsS3Region,
+  secretAccessKey: credentials.awsSecretKey,
 });
 const docClient = new aws.DynamoDB.DocumentClient();
 const table = 'mind-travel-users';
@@ -20,16 +20,17 @@ const saltRounds = 10;
 
 /* Authenticate user */
 usersRouter.post('/authenticate', (req, res) => {
+  console.log('test');
   console.log(req.body);
   // Prepare the db query
   const readParams = {
-    TableName: table,
     Key: {
       username: req.body.username,
     },
+    TableName: table,
   };
   // Get the user from his username
-  docClient.get(readParams, function(err, data) {
+  docClient.get(readParams, (err, data) => {
     if (err) {
       console.error(
         'Unable to read item. Error JSON:',
@@ -45,10 +46,10 @@ usersRouter.post('/authenticate', (req, res) => {
     }
     const user = data.Item;
 
-    //check if the password is correct
+    // check if the password is correct
     bcrypt
       .compare(req.body.password, user.password)
-      .then(isPasswordCorrect => {
+      .then((isPasswordCorrect: boolean) => {
         if (isPasswordCorrect) {
           const jwtSecret = credentials.jwtSecret;
           const token = jwt.sign({ sub: user.username }, jwtSecret);
@@ -73,11 +74,11 @@ usersRouter.post('/', (req, res) => {
     .hash(req.body.password, saltRounds)
     .then(hash => {
       const dynamoPutUserParams = {
-        TableName: table,
         Item: {
-          username: req.body.username,
           password: hash,
+          username: req.body.username,
         },
+        TableName: table,
       };
       docClient.put(dynamoPutUserParams, (err, data) => {
         if (err) {
