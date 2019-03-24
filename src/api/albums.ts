@@ -7,7 +7,6 @@ const albumsRouter = Router();
 
 /* Get all albums */
 albumsRouter.get('/', (req, res) => {
-  res.send('test');
   const albums: Album[] = [];
 
   aws.config.update({

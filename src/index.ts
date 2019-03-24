@@ -16,13 +16,6 @@ const app = express();
 // logger
 app.use(morgan('dev'));
 
-// api router
-app.use('/api', api());
-// app.post('/api/users/authenticate', (req, res) => {
-//   console.log('test');
-//   res.send({ test: 'kikkor' });
-// });
-
 app.use(cors());
 
 app.use(
@@ -30,6 +23,10 @@ app.use(
     limit: config.bodyLimit,
   }),
 );
+
+// api router
+app.use('/api', api());
+
 // require JWT authentication
 const secret = credentials.jwtSecret;
 
