@@ -15,7 +15,10 @@
     // Import non-ES modules as default imports.
     "esModuleInterop": true,
 
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+
+    "rootDir": ".",
+    "outDir": "./dist"
   },
   "include": ["src"],
 
