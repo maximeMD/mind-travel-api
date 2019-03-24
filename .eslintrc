@@ -4,10 +4,11 @@
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
-    }
+    },
+    "project": "./tsconfig.json"
   },
-  "rules": {
-    "semi": "error"
-  },
-  "parser": "babel-eslint"
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "rules": { "resolveJsonModule": true },
+  "extends": ["plugin:@typescript-eslint/recommended"]
 }

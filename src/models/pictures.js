@@ -1,5 +1,6 @@
 const pictures = [
   {
-    key: 'zedofuliudhf'
-  }
+    key: 'zedofuliudhf',
+  },
 ];
+export default pictures;

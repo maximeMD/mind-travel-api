@@ -6,15 +6,12 @@ import bodyParser from 'body-parser';
 import middleware from './middleware';
 import api from './api';
 import config from './config.json';
-import path from 'path';
-import aws from 'aws-sdk';
-import * as credentials from './credentials.json';
-import bcrypt from 'bcrypt';
+import credentials from './credentials.json';
 import expressJwt from 'express-jwt';
 import companion from '@uppy/companion';
 
 let app = express();
-app.server = http.createServer(app);
+// app.server = http.createServer(app);
 
 // logger
 app.use(morgan('dev'));
@@ -41,17 +38,19 @@ app.use(
 );
 
 // api router
-app.use('/api', api({ config }));
+app.use('/api');
 
-app.server.listen(process.env.PORT || config.port, () => {
-  console.log(`Started on port ${app.server.address().port}`);
+// app.server.listen(process.env.PORT || config.port, () => {
+app.listen(process.env.PORT || config.port, () => {
+  // console.log(`Started on port ${app.server.address().port}`);
+  console.log(`Started on port ${process.env.PORT || config.port}`);
 });
 
 const options = {
   providerOptions: {
     s3: {
       // The picture key is build from the request 'Album' header and the file name
-      getKey: (req, filename) => req.get('Album') + '/' + filename,
+      getKey: (req: any, filename: any) => req.get('Album') + '/' + filename,
       key: credentials.awsAccessKey,
       secret: credentials.awsSecretKey,
       bucket: credentials.awsS3BucketNameImages,
