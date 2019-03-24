@@ -1,19 +1,20 @@
-Express & ES6 REST API Boilerplate
-==================================
+# ॐ Mind Travel API
 
-This is a straightforward boilerplate for building REST APIs with ES6 and Express.
+Mind Travel is a picture gallery web application, which aims little circles of friends who want to share their images on a secure and self-hosted environment.
 
-- ES6 support via [babel](https://babeljs.io)
+This is the repository of the Mind Travel API. The client part is a PWA made with React, and can be found [here](https://github.com/maximeMD/mind-travel-api).
+
+This API is developped with :
+
+- [Node.js](https://nodejs.org) and the [Express](https://expressjs.com/) framework
+- [TypeScript](https://www.typescriptlang.org/)
 - REST resources as middleware via [resource-router-middleware](https://github.com/developit/resource-router-middleware)
 - CORS support via [cors](https://github.com/troygoode/node-cors)
 - Body Parsing via [body-parser](https://github.com/expressjs/body-parser)
 
 > Tip: If you are using [Mongoose](https://github.com/Automattic/mongoose), you can automatically expose your Models as REST resources using [restful-mongoose](https://git.io/restful-mongoose).
 
-
-
-Getting Started
----------------
+## Getting Started
 
 ```sh
 # clone it
@@ -32,8 +33,9 @@ PORT=8080 npm run dev
 # Start production server:
 PORT=8080 npm start
 ```
-Docker Support
-------
+
+## Docker Support
+
 ```sh
 cd express-es6-rest-api
 
@@ -47,11 +49,10 @@ docker run -p 8080:8080 es6/api-service
 #                 ^            ^
 #          bind the port    container tag
 #          to your host
-#          machine port   
+#          machine port
 
 ```
 
-License
--------
+## License
 
 MIT
