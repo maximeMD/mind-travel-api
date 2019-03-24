@@ -9,6 +9,9 @@
   },
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
-  "rules": { "resolveJsonModule": true },
+  "rules": {
+    "resolveJsonModule": true,
+    "@typescript-eslint/no-unused-vars": "error"
+  },
   "extends": ["plugin:@typescript-eslint/recommended"]
 }

@@ -37,9 +37,6 @@ app.use(
   }),
 );
 
-// api router
-app.use('/api');
-
 // app.server.listen(process.env.PORT || config.port, () => {
 app.listen(process.env.PORT || config.port, () => {
   // console.log(`Started on port ${app.server.address().port}`);
