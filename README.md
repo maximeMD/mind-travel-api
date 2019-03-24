@@ -2,24 +2,24 @@
 
 Mind Travel is a picture gallery web application, which aims little circles of friends who want to share their images on a secure and self-hosted environment.
 
+> The project is in development phase, do not use this app in production. This is a personal project, but open to everybody who wants to collaborate ;p
+
 This is the repository of the Mind Travel API. The client part is a PWA made with React, and can be found [here](https://github.com/maximeMD/mind-travel-api).
 
 This API is developped with :
 
 - [Node.js](https://nodejs.org) and the [Express](https://expressjs.com/) framework
-- [TypeScript](https://www.typescriptlang.org/)
-- REST resources as middleware via [resource-router-middleware](https://github.com/developit/resource-router-middleware)
-- CORS support via [cors](https://github.com/troygoode/node-cors)
-- Body Parsing via [body-parser](https://github.com/expressjs/body-parser)
-
-> Tip: If you are using [Mongoose](https://github.com/Automattic/mongoose), you can automatically expose your Models as REST resources using [restful-mongoose](https://git.io/restful-mongoose).
+- [TypeScript](https://www.typescriptlang.org/) run with [ts-node](https://www.npmjs.com/package/ts-node)
+- [JWT](https://jwt.io/introduction/) authentication
+- [AWS S3](https://en.wikipedia.org/wiki/Amazon_S3) to store pictures and thumbnails
+- [AWS Lambda](https://en.wikipedia.org/wiki/AWS_Lambda) function to generate thumbnail pictures
 
 ## Getting Started
 
 ```sh
 # clone it
-git clone git@github.com:developit/express-es6-rest-api.git
-cd express-es6-rest-api
+git clone https://github.com/maximeMD/mind-travel-api
+cd mind-travel-api
 
 # Make it your own
 rm -rf .git && git init && npm init
@@ -55,4 +55,4 @@ docker run -p 8080:8080 es6/api-service
 
 ## License
 
-MIT
+This project ins under [MIT License](https://opensource.org/licenses/MIT)
