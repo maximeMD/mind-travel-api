@@ -10,7 +10,8 @@
     "prestart": "npm run -s build",
     "test": "eslint src",
     "debug": "babel-node src,stage-0",
-    "check-types": "tsc"
+    "check-types": "tsc",
+    "tslint": "tslint -c tslint.json 'src/**/*.ts'"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",
@@ -62,6 +63,7 @@
     "babel-preset-stage-0": "^6.5.0",
     "eslint": "^5.15.3",
     "nodemon": "^1.9.2",
+    "tslint": "^5.14.0",
     "typescript": "^3.3.4000"
   }
 }
