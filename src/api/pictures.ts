@@ -1,14 +1,14 @@
 import aws from 'aws-sdk';
-import * as credentials from '../credentials.json';
 import { Router } from 'express';
 import jwt from 'jsonwebtoken';
+import * as credentials from '../credentials.json';
 
-var imagesRouter = Router();
+const imagesRouter = Router();
 
 aws.config.update({
-  secretAccessKey: credentials.awsSecretKey,
   accessKeyId: credentials.awsAccessKey,
   region: credentials.awsS3Region,
+  secretAccessKey: credentials.awsSecretKey,
 });
 const s3 = new aws.S3();
 
@@ -20,9 +20,10 @@ imagesRouter.get('/:id/:token', (req, res) => {
       Bucket: credentials.awsS3BucketNameImages,
       Key: req.params.id,
     };
-    s3.getObject(s3ParamsGetImage, function(err, data) {
-      if (err) console.log(err);
-      else {
+    s3.getObject(s3ParamsGetImage, (err, data) => {
+      if (err) {
+        console.log(err);
+      } else {
         res.writeHead(200, { 'Content-Type': 'image/jpeg' });
         res.write(data.Body, 'binary');
         res.end(null, 'binary');
@@ -40,9 +41,10 @@ imagesRouter.get('/thumb/:id/:token', (req, res) => {
       Bucket: credentials.awsS3BucketNameImagesThumbnails,
       Key: req.params.id,
     };
-    s3.getObject(s3ParamsGetImageThumb, function(err, data) {
-      if (err) console.log(err);
-      else {
+    s3.getObject(s3ParamsGetImageThumb, (err, data) => {
+      if (err) {
+        console.log(err);
+      } else {
         res.writeHead(200, { 'Content-Type': 'image/jpeg' });
         res.write(data.Body, 'binary');
         res.end(null, 'binary');
