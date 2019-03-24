@@ -13,6 +13,8 @@ import companion from '@uppy/companion';
 let app = express();
 // app.server = http.createServer(app);
 
+const test = 'tlalt';
+
 // logger
 app.use(morgan('dev'));
 
