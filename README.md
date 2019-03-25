@@ -1,6 +1,6 @@
 # ॐ Mind Travel API
 
-Mind Travel is a picture gallery web application, which aims little circles of friends who want to share their images on a secure and self-hosted environment. Mind Travel could, in the future, include many feature and evolve to be more than just an image gallery.
+Mind Travel is a picture gallery web application, which aims little circles of friends who want to share their images on a secure and self-hosted environment. This project is experimental, and the main goal is to discover, learn and implement new technologies. Mind Travel could, in the future, include many feature and evolve to be more than just an image gallery.
 
 > The project is in development phase, do not use this app in production. This is a personal project, but open to everybody who wants to collaborate ;p
 
