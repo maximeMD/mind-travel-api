@@ -7,20 +7,24 @@ Mind Travel is a picture gallery web application, which aims little circles of f
 This is the repository of the Mind Travel API. The client part is a PWA made with React, and can be found [here](https://github.com/maximeMD/mind-travel-api).
 
 This API is developped with :
+
 - [Node.js](https://nodejs.org) and the [Express](https://expressjs.com/) framework
 - [TypeScript](https://www.typescriptlang.org/) run with [ts-node](https://www.npmjs.com/package/ts-node)
 - [JWT](https://jwt.io/introduction/) authentication
 - [AWS S3](https://en.wikipedia.org/wiki/Amazon_S3) to store pictures and thumbnails
 - [AWS Lambda](https://en.wikipedia.org/wiki/AWS_Lambda) function to generate thumbnail pictures
-
+- [Uppy Companion](https://uppy.io/docs/companion/) to easily upload pictures so the S3 bucket
 
 ## Getting Started
 
 ```sh
 # clone it
 git clone https://github.com/maximeMD/mind-travel-api
-cd mind-travel-api
+```
 
+Copy the example.credentials.json file to a credentials.json file, then edit it to set your own credentials. Then, you can run the project as following :
+
+```sh
 # Install dependencies
 npm install
 
@@ -51,5 +55,6 @@ docker run -p 8080:8080 mind-travel/api
 ```
 
 ## License
+
 This project ins under [MIT License](https://opensource.org/licenses/MIT)
 It is made (and hardly modified) from the [Express & ES6 REST API Boilerplate](https://github.com/developit/express-es6-rest-api)
