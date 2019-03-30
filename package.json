@@ -38,7 +38,8 @@
     "jsonwebtoken": "^8.5.0",
     "local-storage": "^1.4.2",
     "morgan": "^1.8.0",
-    "resource-router-middleware": "^0.6.0"
+    "resource-router-middleware": "^0.6.0",
+    "socket.io": "^2.2.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
@@ -54,6 +55,7 @@
     "@types/jsonwebtoken": "^8.3.2",
     "@types/morgan": "^1.7.35",
     "@types/node": "^11.11.6",
+    "@types/socket.io": "^2.1.2",
     "@typescript-eslint/eslint-plugin": "^1.5.0",
     "@typescript-eslint/eslint-plugin-tslint": "^1.5.0",
     "@typescript-eslint/parser": "^1.5.0",

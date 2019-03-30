@@ -9,6 +9,7 @@ import api from './api';
 import config from './config.json';
 import credentials from './credentials.json';
 import middleware from './middleware';
+import io from 'socket.io';
 
 const app = express();
 // app.server = http.createServer(app);
@@ -37,6 +38,8 @@ app.use(
       '/api/users/authenticate',
       // client fetch images without headers, but the token is directly on the URL
       /\/api\/pictures/i,
+      // TODO : use jwt for socket.io
+      /\/socket.io.*/,
     ],
   }),
 );
@@ -68,5 +71,18 @@ const options = {
 };
 
 app.use(companion.app(options));
+
+// var http = require(‘http’).Server(app);
+// var io = require(‘socket.io’)(http);
+
+const server = http.createServer(app);
+const socketIO = io(server);
+
+socketIO.on('connection', (socket: io.Socket) => {
+  socket.emit('news', { hello: 'world' });
+  socket.on('my other event', data => {
+    console.log(data);
+  });
+});
 
 export default app;
