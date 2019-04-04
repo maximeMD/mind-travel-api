@@ -11,7 +11,7 @@ albumsRouter.get('/', (req, res) => {
 
   aws.config.update({
     accessKeyId: credentials.awsAccessKey,
-    region: credentials.awsS3Region,
+    region: credentials.awsRegion,
     secretAccessKey: credentials.awsSecretKey,
   });
 

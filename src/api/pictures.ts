@@ -1,5 +1,5 @@
 import aws from 'aws-sdk';
-import { Router } from 'express';
+import { Router, Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 import * as credentials from '../credentials.json';
 
@@ -7,13 +7,13 @@ const imagesRouter = Router();
 
 aws.config.update({
   accessKeyId: credentials.awsAccessKey,
-  region: credentials.awsS3Region,
+  region: credentials.awsRegion,
   secretAccessKey: credentials.awsSecretKey,
 });
 const s3 = new aws.S3();
 
 /* Get an image */
-imagesRouter.get('/:id/:token', (req, res) => {
+imagesRouter.get('/:id/:token', (req: Request, res: Response) => {
   if (req.params.token && jwt.verify(req.params.token, credentials.jwtSecret)) {
     console.log('Retrieve image with key : ' + req.params.id);
     const s3ParamsGetImage = {

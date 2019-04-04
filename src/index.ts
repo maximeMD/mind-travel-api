@@ -1,4 +1,5 @@
 import companion from '@uppy/companion';
+import aws from 'aws-sdk';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import express from 'express';
@@ -41,6 +42,13 @@ app.use(
   }),
 );
 
+//  AWS config
+aws.config.update({
+  accessKeyId: credentials.awsAccessKey,
+  region: credentials.awsRegion,
+  secretAccessKey: credentials.awsSecretKey,
+});
+
 // app.server.listen(process.env.PORT || config.port, () => {
 app.listen(process.env.PORT || config.port, () => {
   console.log(`Started on port ${process.env.PORT || config.port}`);
@@ -55,7 +63,7 @@ const options = {
       bucket: credentials.awsS3BucketNameImages,
       getKey: (req: any, filename: any) => req.get('Album') + '/' + filename,
       key: credentials.awsAccessKey,
-      region: credentials.awsS3Region,
+      region: credentials.awsRegion,
       secret: credentials.awsSecretKey,
     },
   },
