@@ -96,10 +96,12 @@ usersRouter.post(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
+    // encrypt the password
     const saltRounds = 10;
     bcrypt
       .hash(req.body.password, saltRounds)
       .then(hash => {
+        // prepare query
         const docClient = new aws.DynamoDB.DocumentClient();
         const dynamoPutUserParams = {
           Item: {
@@ -108,6 +110,7 @@ usersRouter.post(
           },
           TableName: credentials.awsDynamoTableUsers,
         };
+        // add the user to database
         docClient.put(dynamoPutUserParams, (err, data) => {
           if (err) {
             console.log(err);

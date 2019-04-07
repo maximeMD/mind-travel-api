@@ -1,5 +1,5 @@
 import aws from 'aws-sdk';
-import { Router, Request, Response } from 'express';
+import { Request, Response, Router } from 'express';
 import jwt from 'jsonwebtoken';
 import * as credentials from '../credentials.json';
 
@@ -12,7 +12,11 @@ aws.config.update({
 });
 const s3 = new aws.S3();
 
-/* Get an image */
+/**
+ * GET /pictures/:id/:token
+ * Get an image from an Id.
+ * The user token is sent as an url parameter.
+ */
 imagesRouter.get('/:id/:token', (req: Request, res: Response) => {
   if (req.params.token && jwt.verify(req.params.token, credentials.jwtSecret)) {
     console.log('Retrieve image with key : ' + req.params.id);
@@ -33,7 +37,12 @@ imagesRouter.get('/:id/:token', (req: Request, res: Response) => {
     res.sendStatus(401);
   }
 });
-/* Get an image thumbnail */
+
+/**
+ * GET /pictures/thumb/:id/:token
+ * Get an image thumbnail
+ * The user token is sent as an url parameter.
+ */
 imagesRouter.get('/thumb/:id/:token', (req, res) => {
   if (req.params.token && jwt.verify(req.params.token, credentials.jwtSecret)) {
     console.log('Retrieve image thumbnail with key : ' + req.params.id);
