@@ -38,7 +38,7 @@
     "jsonwebtoken": "^8.5.0",
     "local-storage": "^1.4.2",
     "morgan": "^1.8.0",
-    "resource-router-middleware": "^0.6.0"
+    "resource-router-middleware": "^0.7.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
